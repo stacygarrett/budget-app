@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600" rel="stylesheet" type="text/css">
+        <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        <link type="text/css" rel="stylesheet" href="style.css">
+        <title>Budgety</title>
+    </head>
+    <body>
+        
+        <div class="top top-blue">
+            <div class="budget">
+                <div class="budget__title">
+                    Available Budget in <span class="budget__title--month">%Month%</span>:
+                </div>
+                
+                <div class="budget__value">+ 2,345.64</div>
+                
+                <div class="budget__income clearfix">
+                    <div class="budget__income--text">Income</div>
+                    <div class="right">
+                        <div class="budget__income--value">+ 4,300.00</div>
+                        <div class="budget__income--percentage">&nbsp;</div>
+                    </div>
+                </div>
+                
+                <div class="budget__expenses clearfix">
+                    <div class="budget__expenses--text">Expenses</div>
+                    <div class="right clearfix">
+                        <div class="budget__expenses--value">- 1,954.36</div>
+                        <div class="budget__expenses--percentage">45%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottom">
+            <div class="add">
+
+                <div class="add__container">
+
+                    <select class="dropdown add__type">
+                        <option value="inc" selected>+</option>
+                        <option value="exp">-</option>
+                    </select>
+
+                    <input type="text" class="add__description" placeholder="Add description">                                     
+                    <input type="number" class="add__value" placeholder="Value">
+                    
+                        <!-- <button class="dropbtn">Dropdown</button> -->
+                        <select class="dropdown add__category">
+                          <option value="Category">Category</option>
+                          <option value="Salary">Salary</option>
+                          <option value="Extra Income">Extra Income</option>
+                          <option value="Mortgage">Mortgage</option>
+                          <option value="Rent">Rent</option>
+                          <option value="Utilities">Utilities</option>
+                          <option value="Transportation">Transportation</option>
+                          <option value="Groceries">Groceries</option>
+                          <option value="Phone">Phone</option>
+                          <option value="Insurance">Insurance</option>
+                          <option value="Restaurants">Eating Out</option>
+                          <option value="Entertainment">Entertainment</option>
+                          <option value="Shopping">Shopping</option>
+                          <option value="Misc.">Misc.</option>
+                      </select>
+                        <select class="dropdown add__category2">
+                          <option value="Category">Category</option>
+                          <option value="Salary">Salary</option>
+                          <option value="Extra $">Extra Income</option>
+                          <option value="Mortg.">Mortgage</option>
+                          <option value="Rent">Rent</option>
+                          <option value="Util.">Utilities</option>
+                          <option value="Transp.">Transportation</option>
+                          <option value="Groc.">Groceries</option>
+                          <option value="Phone">Phone</option>
+                          <option value="Insur.">Insurance</option>
+                          <option value="Rest.">Eating Out</option>
+                          <option value="Fun">Entertainment</option>
+                          <option value="Shop.">Shopping</option>
+                          <option value="Misc.">Misc.</option>
+                      </select>
+                  
+
+                    <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
+                </div>
+            </div>
+            
+            <div class="container clearfix">
+                <div class="income">
+                    <h2 class="income__title">Income</h2>
+                    
+                    <div class="income__list">
+                         
+                        <div class="item clearfix" id="income-0">
+                            <div class="item__description">Apartment rent</div>
+                            <div class="item__cat">Category</div>
+                            <div class="right__list clearfix">
+                                <div class="item__value">+ 2,100.00</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="item clearfix" id="income-1">
+                            <div class="item__description">Grocery Shopping</div>
+                            <div class="item__cat">Category</div>
+                            <div class="right__list clearfix">
+                                <div class="item__value">+ 1,500.00</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                
+                
+                
+                <div class="expenses">
+                    <h2 class="expenses__title">Expenses</h2>
+                    
+                    <div class="expenses__list">
+                       
+                        
+                        <div class="item item__expenses clearfix" id="expense-0">
+                            <div class="item__description">Apartment rent</div>
+                                <div class="exp-container">
+                                    <div class="cat__percentage">21%</div>
+                            <div class="item__cat">Mortgage</div>
+                        </div>
+                        <div class="right__list-expenses clearfix">
+                            <div class="item__value">- 900.00</div>
+                            <div class="item__percentage">21%</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item item__expenses clearfix" id="expense-1">
+                            <div class="item__description">Grocery shopping</div>
+                            <div class="exp-container">
+                                <div class="cat__percentage">21%</div>
+                            <div class="item__cat">Grocery</div>
+                        </div>
+                            <div class="right__list-expenses clearfix">
+                                <div class="item__value">- 435.28</div>
+                                <div class="item__percentage">10%</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        
+        <script src="app.js"></script>
+    </body>
+</html>
