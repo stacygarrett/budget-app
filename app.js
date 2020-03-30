@@ -379,23 +379,21 @@ const controller = (function(budgetCtrl, UICtrl) {
 		if (document.querySelector(DOM.categoryMenu)) {
 			document.querySelector(DOM.categoryMenu).addEventListener('keypress', function(event) {
 				if (event.key === 'Enter' || event.which === 13) {
-					// evt.preventDefault();
 					ctrlAddItem();
 				}
 			});
 		} else if (document.querySelector(DOM.categoryMenu2)) {
 			document.querySelector(DOM.categoryMenu2).addEventListener('keypress', function(event) {
 				if (event.key === 'Enter' || event.which === 13) {
-					// evt.preventDefault();
 					ctrlAddItem();
 				}
 			});
 		}
-		document.getElementById('touchable').addEventListener('touchend', function(evt) {
+		document.getElementById('touchable').addEventListener('touch', function(evt) {
 			if (evt.touches.item(0) == evt.targetTouches.item(0)) {
 				if (document.querySelector('.add__btn')) {
 					document.querySelector('.add__btn').addEventListener(
-						'keypress',
+						'touchend',
 						function(event) {
 							if (event.touch) {
 								evt.preventDefault();
@@ -406,7 +404,7 @@ const controller = (function(budgetCtrl, UICtrl) {
 					);
 				} else if (document.querySelector('.add__btn')) {
 					document.querySelector('.add__btn').addEventListener(
-						'keypress',
+						'touchend',
 						function(event) {
 							if (event.touch) {
 								evt.preventDefault();
