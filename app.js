@@ -375,7 +375,22 @@ const controller = (function(budgetCtrl, UICtrl) {
 		} */
 	const setupEventListeners = function(evt) {
 		const DOM = UICtrl.getDOMstrings();
-
+		document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+		if (document.querySelector(DOM.categoryMenu)) {
+			document.querySelector(DOM.categoryMenu).addEventListener('keypress', function(event) {
+				if (event.key === 'Enter' || event.which === 13) {
+					// evt.preventDefault();
+					ctrlAddItem();
+				}
+			});
+		} else if (document.querySelector(DOM.categoryMenu2)) {
+			document.querySelector(DOM.categoryMenu2).addEventListener('keypress', function(event) {
+				if (event.key === 'Enter' || event.which === 13) {
+					// evt.preventDefault();
+					ctrlAddItem();
+				}
+			});
+		}
 		document.getElementById('touchable').addEventListener('touchend', function(evt) {
 			if (evt.touches.item(0) == evt.targetTouches.item(0)) {
 				if (document.querySelector('.add__btn')) {
@@ -404,27 +419,8 @@ const controller = (function(budgetCtrl, UICtrl) {
 			}
 		});
 
-		document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
-		if (document.querySelector(DOM.categoryMenu)) {
-			document.querySelector(DOM.categoryMenu).addEventListener('keypress', function(event) {
-				if (event.key === 'Enter' || event.which === 13) {
-					evt.preventDefault();
-					ctrlAddItem();
-				}
-			});
-		} else if (document.querySelector(DOM.categoryMenu2)) {
-			document.querySelector(DOM.categoryMenu2).addEventListener('keypress', function(event) {
-				if (event.key === 'Enter' || event.which === 13) {
-					evt.preventDefault();
-					ctrlAddItem();
-				}
-			});
-		}
-
 		document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
 		document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changedType);
-		// const mq = window.matchMedia('(max-width: 530px)');
-		// mq.addListener(hideAndShowPercent);
 	};
 	const updateBudget = function() {
 		// 1. Calculate the Budget
