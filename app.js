@@ -324,33 +324,104 @@ const UIController = (function() {
 
 // GLOBAL APP Control Module
 const controller = (function(budgetCtrl, UICtrl) {
-	const setupEventListeners = function() {
+	/* const clickEvent = (function() {
+		if ('ontouchstart' in document.documentElement === true) {
+			return 'touchstart';
+		} else {
+			return 'click';
+		}
+	})(); */
+	/* const setupEventListeners = function(evt) {
 		const DOM = UICtrl.getDOMstrings();
-		const clickEvent = (function() {
-			if ('ontouchstart' in document.documentElement === true) {
-				return 'touchstart';
-			} else {
-				return 'click';
-			}
-		})();
-		document.querySelector(DOM.inputBtn).addEventListener(clickEvent, ctrlAddItem);
+		document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
 		if (document.querySelector(DOM.categoryMenu)) {
 			document.querySelector(DOM.categoryMenu).addEventListener('keypress', function(event) {
 				if (event.key === 'Enter' || event.which === 13) {
+					evt.preventDefault();
 					ctrlAddItem();
 				}
 			});
 		} else if (document.querySelector(DOM.categoryMenu2)) {
 			document.querySelector(DOM.categoryMenu2).addEventListener('keypress', function(event) {
 				if (event.key === 'Enter' || event.which === 13) {
+					evt.preventDefault();
 					ctrlAddItem();
 				}
 			});
 		}
-		// document.querySelector(DOM.inputBtn).addEventListener('touchstart', ctrlAddItem);
+		document.querySelector(DOM.inputBtn).addEventListener('touchstart', ctrlAddItem);
+		if (document.querySelector(DOM.categoryMenu)) {
+			document.querySelector(DOM.categoryMenu).addEventListener(
+				'keypress',
+				function(event) {
+					if (event.touch) {
+						evt.preventDefault();
+						ctrlAddItem();
+					}
+				},
+				true
+			);
+		} else if (document.querySelector(DOM.categoryMenu2)) {
+			document.querySelector(DOM.categoryMenu2).addEventListener(
+				'keypress',
+				function(event) {
+					if (event.touch) {
+						evt.preventDefault();
+						ctrlAddItem();
+					}
+				},
+				true
+			);
+		} */
+	const setupEventListeners = function(evt) {
+		const DOM = UICtrl.getDOMstrings();
 
-		document.querySelector(DOM.container).addEventListener(clickEvent, ctrlDeleteItem);
-		// document.querySelector(DOM.container).addEventListener('touchstart', ctrlDeleteItem);
+		document.getElementById('touchable').addEventListener('touchend', function(evt) {
+			if (evt.touches.item(0) == evt.targetTouches.item(0)) {
+				if (document.querySelector('.add__btn')) {
+					document.querySelector('.add__btn').addEventListener(
+						'keypress',
+						function(event) {
+							if (event.touch) {
+								evt.preventDefault();
+								ctrlAddItem();
+							}
+						},
+						false
+					);
+				} else if (document.querySelector('.add__btn')) {
+					document.querySelector('.add__btn').addEventListener(
+						'keypress',
+						function(event) {
+							if (event.touch) {
+								evt.preventDefault();
+								ctrlAddItem();
+							}
+						},
+						false
+					);
+				}
+			}
+		});
+
+		document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+		if (document.querySelector(DOM.categoryMenu)) {
+			document.querySelector(DOM.categoryMenu).addEventListener('keypress', function(event) {
+				if (event.key === 'Enter' || event.which === 13) {
+					evt.preventDefault();
+					ctrlAddItem();
+				}
+			});
+		} else if (document.querySelector(DOM.categoryMenu2)) {
+			document.querySelector(DOM.categoryMenu2).addEventListener('keypress', function(event) {
+				if (event.key === 'Enter' || event.which === 13) {
+					evt.preventDefault();
+					ctrlAddItem();
+				}
+			});
+		}
+
+		document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
 		document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changedType);
 		// const mq = window.matchMedia('(max-width: 530px)');
 		// mq.addListener(hideAndShowPercent);
