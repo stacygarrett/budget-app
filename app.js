@@ -326,7 +326,14 @@ const UIController = (function() {
 const controller = (function(budgetCtrl, UICtrl) {
 	const setupEventListeners = function() {
 		const DOM = UICtrl.getDOMstrings();
-		document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+		const clickEvent = (function() {
+			if ('ontouchstart' in document.documentElement === true) {
+				return 'touchstart';
+			} else {
+				return 'click';
+			}
+		})();
+		document.querySelector(DOM.inputBtn).addEventListener(clickEvent, ctrlAddItem);
 		if (document.querySelector(DOM.categoryMenu)) {
 			document.querySelector(DOM.categoryMenu).addEventListener('keypress', function(event) {
 				if (event.key === 'Enter' || event.which === 13) {
@@ -340,21 +347,10 @@ const controller = (function(budgetCtrl, UICtrl) {
 				}
 			});
 		}
-		if (document.querySelector(DOM.categoryMenu)) {
-			document.querySelector(DOM.categoryMenu).addEventListener('touchstart', function(event) {
-				if (event.key === 'Enter' || event.which === 13) {
-					ctrlAddItem();
-				}
-			});
-		} else if (document.querySelector(DOM.categoryMenu2)) {
-			document.querySelector(DOM.categoryMenu2).addEventListener('touchstart', function(event) {
-				if (event.key === 'Enter' || event.which === 13) {
-					ctrlAddItem();
-				}
-			});
-		}
+		// document.querySelector(DOM.inputBtn).addEventListener('touchstart', ctrlAddItem);
 
-		document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
+		document.querySelector(DOM.container).addEventListener(clickEvent, ctrlDeleteItem);
+		// document.querySelector(DOM.container).addEventListener('touchstart', ctrlDeleteItem);
 		document.querySelector(DOM.inputType).addEventListener('change', UICtrl.changedType);
 		// const mq = window.matchMedia('(max-width: 530px)');
 		// mq.addListener(hideAndShowPercent);
