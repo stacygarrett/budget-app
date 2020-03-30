@@ -230,6 +230,9 @@ const UIController = (function() {
 				html =
 					'<div class="item item__expenses clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="exp-container"><div class="cat__percentage">11%</div><div class="item__cat">%category%</div></div><div class="right__list-expenses clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
 			}
+			if (obj.description[0] !== obj.description[0].toUpperCase()) {
+				obj.description = obj.description[0].toUpperCase() + obj.description.substr(1);
+			}
 			// Replace the placeholder text with some actual data
 			newHtml = html.replace('%id%', obj.id);
 			newHtml = newHtml.replace('%description%', obj.description);

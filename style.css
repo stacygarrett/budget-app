@@ -528,7 +528,7 @@ h2 {
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: center;
-		width: 94%;
+		width: 300px;
 	}
 	.add__description {
 		width: 180px;
