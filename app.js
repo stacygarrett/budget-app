@@ -207,8 +207,6 @@ const UIController = (function() {
 				description : document.querySelector(DOMstrings.inputDescription).value,
 				category    : document.querySelector(DOMstrings.categoryMenu).value,
 				value       : parseFloat(document.querySelector(DOMstrings.inputValue).value)
-				// smallPerc   : document.querySelector(DOMstrings.catPercent).value,
-				// percentage  : document.querySelector(DOMstrings.expensesPercLabel).value
 			};
 		},
 		/* dropdownOptions    : function(type) {
@@ -337,6 +335,19 @@ const controller = (function(budgetCtrl, UICtrl) {
 			});
 		} else if (document.querySelector(DOM.categoryMenu2)) {
 			document.querySelector(DOM.categoryMenu2).addEventListener('keypress', function(event) {
+				if (event.key === 'Enter' || event.which === 13) {
+					ctrlAddItem();
+				}
+			});
+		}
+		if (document.querySelector(DOM.categoryMenu)) {
+			document.querySelector(DOM.categoryMenu).addEventListener('touchstart', function(event) {
+				if (event.key === 'Enter' || event.which === 13) {
+					ctrlAddItem();
+				}
+			});
+		} else if (document.querySelector(DOM.categoryMenu2)) {
+			document.querySelector(DOM.categoryMenu2).addEventListener('touchstart', function(event) {
 				if (event.key === 'Enter' || event.which === 13) {
 					ctrlAddItem();
 				}
