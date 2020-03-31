@@ -533,8 +533,14 @@ h2 {
 	.budget__value {
 		font-size: 3rem;
 	}
+	.container {
+		margin-top: 20px;
+	}
 	.income {
 		margin-bottom: 25px;
+	}
+	.add {
+		padding-bottom: 5px;
 	}
 	.add__container {
 		display: flex;
