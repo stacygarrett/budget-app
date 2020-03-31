@@ -527,6 +527,9 @@ h2 {
 	body {
 		font-size: .8rem;
 	}
+	.income {
+		margin-bottom: 25px;
+	}
 	.budget__value {
 		font-size: 3rem;
 	}
@@ -545,7 +548,6 @@ h2 {
 		width: 180px;
 		font-size: 14px;
 		font-weight: 100;
-		opacity: 90%;
 	}
 	.add__description {
 		display: flex;
@@ -585,9 +587,9 @@ h2 {
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
-	/* .cat__percentage {
-		display: none;
-	} */
+	.cat__percentage {
+		width: 36px;
+	}
 	.exp-container {
 		grid-template-columns: 50% 50%;
 	}
