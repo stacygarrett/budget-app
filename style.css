@@ -613,7 +613,7 @@ h2 {
 	.btn-wrap {
 		display: flex;
 		justify-content: center;
-		margin-right: 50px;
+		margin-right: 10px;
 	}
 	.item__expenses:hover .item__value,
 	.item__expenses:hover .item__percentage {
