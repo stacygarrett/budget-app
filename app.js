@@ -206,6 +206,7 @@ const UIController = (function() {
 				type        : document.querySelector(DOMstrings.inputType).value, // Will be either inc(income) or exp(expense)
 				description : document.querySelector(DOMstrings.inputDescription).value,
 				category    : document.querySelector(DOMstrings.categoryMenu).value,
+				category2   : document.querySelector(DOMstrings.categoryMenu2).value,
 				value       : parseFloat(document.querySelector(DOMstrings.inputValue).value)
 			};
 		},
@@ -223,10 +224,14 @@ const UIController = (function() {
 				element = DOMstrings.incomeContainer;
 				html =
 					'<div class="item clearfix" id="inc-%id%"><div class="item__description">%description%</div><div class="item__cat">%category%</div><div class="right__list clearfix"><div class="item__value">%value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
-			} else if (type === 'exp') {
+			} else if (type === 'exp' || obj.category === DOMstrings.categoryMenu) {
 				element = DOMstrings.expensesContainer;
 				html =
 					'<div class="item item__expenses clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="exp-container"><div class="cat__percentage">11%</div><div class="item__cat">%category%</div></div><div class="right__list-expenses clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+			} else if (type === 'exp' || obj.category2 === DOMstrings.categoryMenu2) {
+				element = DOMstrings.expensesContainer;
+				html =
+					'<div class="item item__expenses clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="exp-container"><div class="cat__percentage">11%</div><div class="item__cat">%category2%</div></div><div class="right__list-expenses clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
 			}
 			if (obj.description[0] !== obj.description[0].toUpperCase()) {
 				obj.description = obj.description[0].toUpperCase() + obj.description.substr(1);
@@ -235,6 +240,7 @@ const UIController = (function() {
 			newHtml = html.replace('%id%', obj.id);
 			newHtml = newHtml.replace('%description%', obj.description);
 			newHtml = newHtml.replace('%category%', obj.category);
+			newHtml = newHtml.replace('%category2%', obj.category2);
 			newHtml = newHtml.replace('%value%', formatNumber(obj.value, type));
 			// newHtml = newHtml.replace('%smPerc%', obj.smPerc);
 
@@ -308,7 +314,7 @@ const UIController = (function() {
 		},
 		changedType        : function() {
 			const fields = document.querySelectorAll(
-				`${DOMstrings.inputType}, ${DOMstrings.inputDescription}, ${DOMstrings.inputValue}, ${DOMstrings.categoryMenu}`
+				`${DOMstrings.inputType}, ${DOMstrings.inputDescription}, ${DOMstrings.inputValue}, ${DOMstrings.categoryMenu},${DOMstrings.categoryMenu2}`
 			);
 			nodeListForEach(fields, function(curr) {
 				curr.classList.toggle('red-focus');
@@ -456,16 +462,31 @@ const controller = (function(budgetCtrl, UICtrl) {
 		if (input.description !== '' && !isNaN(input.value) && input.value > 0 && input.category !== 'Category') {
 			// 2. Add the item to the Budget Controller
 			newItem = budgetCtrl.addItem(input.type, input.description, input.category, input.value);
-			// 3. Add item to the UI
 			UICtrl.addListItem(newItem, input.type);
-			// 4. Clear the fields
 			UICtrl.clearFields();
-			// 5. Calculate and update Budget
 			updateBudget();
-			// 6. Calculate and update Percentages
+			updatePercentages();
+			updateExpPercentages();
+		} else if (
+			input.description !== '' &&
+			!isNaN(input.value) &&
+			input.value > 0 &&
+			input.category2 !== 'Category'
+		) {
+			newItem = budgetCtrl.addItem(input.type, input.description, input.category2, input.value);
+			UICtrl.addListItem(newItem, input.type);
+			UICtrl.clearFields();
+			updateBudget();
 			updatePercentages();
 			updateExpPercentages();
 		}
+		// 3. Add item to the UI
+
+		// 4. Clear the fields
+
+		// 5. Calculate and update Budget
+
+		// 6. Calculate and update Percentages
 	};
 	const ctrlDeleteItem = function(event) {
 		let itemID, splitID, type, ID;
