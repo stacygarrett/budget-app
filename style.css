@@ -553,7 +553,7 @@ h2 {
 		display: flex;
 		justify-content: center;
 		margin: 0;
-		width: 180px;
+		width: 220px;
 		font-size: 14px;
 		font-weight: 100;
 	}
@@ -562,7 +562,7 @@ h2 {
 		justify-content: center;
 		margin-right: 0;
 		margin-top: 8px;
-		width: 180px;
+		width: 220px;
 		font-size: 14px;
 	}
 	.add__value {
@@ -570,7 +570,7 @@ h2 {
 		justify-content: center;
 		margin-right: 0;
 		margin-top: 8px;
-		width: 180px;
+		width: 220px;
 		font-size: 14px;
 	}
 	.add__category {
@@ -607,7 +607,7 @@ h2 {
 		justify-content: center;
 		margin-right: -1px;
 		margin-top: -44px;
-		width: 180px;
+		width: 220px;
 		z-index: 99;
 	}
 	.btn-wrap {
