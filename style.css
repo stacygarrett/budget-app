@@ -225,6 +225,7 @@ body {
 	display: inline-block;
 	vertical-align: middle;
 	line-height: 1.1;
+	padding: 1px;
 	margin-left: 10px;
 }
 
@@ -499,7 +500,7 @@ h2 {
 
 	.add__category,
 	.add__btn {
-		margin-top: 8px;
+		margin: 8px 2px 0 2px;
 	}
 }
 
