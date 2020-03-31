@@ -43,13 +43,6 @@ const budgetController = (function() {
 		});
 		data.totals[type] = sum;
 	};
-	/* let calculateTotalExpenses = function(type) {
-		let sumE = 0;
-		data.allItems[type].forEach((curr) => {
-			sumE += curr.value;
-		});
-		data.totals[type] = sumE;
-	}; */
 	const data = {
 		allItems   : {
 			exp : [],
@@ -108,19 +101,6 @@ const budgetController = (function() {
 				data.percentage = Math.round(data.totals.exp / data.totals.inc * 100);
 			}
 		},
-		/* calculateExpensePerc   : function() {
-			// Caclulate total income and expenses
-			calculateTotalExpenses('exp');
-			// calculateTotal('inc');
-			// Calculate the Expenses: income - expenses
-			data.value = data.allItems.exp[this];
-			// Calculate the Percentage of expenses that we spend
-			if (data.totals.exp === 0) {
-				data.smPerc = -1;
-			} else {
-				data.smPerc = Math.round(this.value / data.totals.exp * 100);
-			}
-		}, */
 		calculatePercentages  : function() {
 			data.allItems.exp.forEach((curr) => {
 				curr.calcPercentage(data.totals.inc);
@@ -210,13 +190,6 @@ const UIController = (function() {
 				value       : parseFloat(document.querySelector(DOMstrings.inputValue).value)
 			};
 		},
-		/* dropdownOptions    : function(type) {
-			const menu = document.querySelector(DOMstrings.dropdown);
-			if (type === 'inc') {
-				menu.style.opacity = '100%';
-			} else {
-			}
-		}, */
 		addListItem        : function(obj, type) {
 			let html, newHtml, element;
 			// Create HTML string with placeholder text
@@ -242,7 +215,6 @@ const UIController = (function() {
 			newHtml = newHtml.replace('%category%', obj.category);
 			newHtml = newHtml.replace('%category2%', obj.category2);
 			newHtml = newHtml.replace('%value%', formatNumber(obj.value, type));
-			// newHtml = newHtml.replace('%smPerc%', obj.smPerc);
 
 			// Insert the HTML into the DOM
 			document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
@@ -291,12 +263,6 @@ const UIController = (function() {
 				}
 			});
 		},
-		/* hideAndShowPercent : function(x) {
-			if (x.matches) {
-				document.querySelector(DOMstrings.expPercent).display = 'block';
-				document.querySelectorAll(DOMstrings.categoryMenu2).display = 'none';
-			}
-		}, */
 		displayExpPerc     : function(percentages) {
 			const fields2 = document.querySelectorAll(DOMstrings.expPercent);
 			nodeListForEach(fields2, function(current, index) {
@@ -330,55 +296,6 @@ const UIController = (function() {
 
 // GLOBAL APP Control Module
 const controller = (function(budgetCtrl, UICtrl) {
-	/* const clickEvent = (function() {
-		if ('ontouchstart' in document.documentElement === true) {
-			return 'touchstart';
-		} else {
-			return 'click';
-		}
-	})(); */
-	/* const setupEventListeners = function(evt) {
-		const DOM = UICtrl.getDOMstrings();
-		document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
-		if (document.querySelector(DOM.categoryMenu)) {
-			document.querySelector(DOM.categoryMenu).addEventListener('keypress', function(event) {
-				if (event.key === 'Enter' || event.which === 13) {
-					evt.preventDefault();
-					ctrlAddItem();
-				}
-			});
-		} else if (document.querySelector(DOM.categoryMenu2)) {
-			document.querySelector(DOM.categoryMenu2).addEventListener('keypress', function(event) {
-				if (event.key === 'Enter' || event.which === 13) {
-					evt.preventDefault();
-					ctrlAddItem();
-				}
-			});
-		}
-		document.querySelector(DOM.inputBtn).addEventListener('touchstart', ctrlAddItem);
-		if (document.querySelector(DOM.categoryMenu)) {
-			document.querySelector(DOM.categoryMenu).addEventListener(
-				'keypress',
-				function(event) {
-					if (event.touch) {
-						evt.preventDefault();
-						ctrlAddItem();
-					}
-				},
-				true
-			);
-		} else if (document.querySelector(DOM.categoryMenu2)) {
-			document.querySelector(DOM.categoryMenu2).addEventListener(
-				'keypress',
-				function(event) {
-					if (event.touch) {
-						evt.preventDefault();
-						ctrlAddItem();
-					}
-				},
-				true
-			);
-		} */
 	const setupEventListeners = function(evt) {
 		const DOM = UICtrl.getDOMstrings();
 		document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
@@ -449,10 +366,6 @@ const controller = (function(budgetCtrl, UICtrl) {
 		console.log(percentages2);
 		UICtrl.displayExpPerc(percentages2);
 	};
-	/* const hideAndShow = function() {
-		document.querySelector('.add__category2').addEventListener('click', budgetCtrl.hideAndShowPercent);
-		// budgetCtrl.hideAndShowPercent();
-	}; */
 	const ctrlAddItem = function() {
 		let input, newItem;
 		// 1. Get the field input data
