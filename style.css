@@ -23,6 +23,7 @@ body {
 	height: 100vh;
 	font-weight: 400;
 	overflow: scroll;
+	padding-bottom: 50px;
 }
 
 .right {
@@ -41,9 +42,7 @@ body {
 **********************************************/
 
 .top {
-	height: 50vh;
-	/* background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)); */
-	/* url(back.png); */
+	height: 40vh;
 	background-size: cover;
 	background-position: center;
 	position: relative;
@@ -525,15 +524,17 @@ h2 {
 
 @media (max-width: 530px) {
 	body {
-		font-size: .8rem;
+		font-size: .7rem;
 	}
-	.income {
-		margin-bottom: 25px;
+	.budget {
+		width: 85%;
 	}
 	.budget__value {
 		font-size: 3rem;
 	}
-
+	.income {
+		margin-bottom: 25px;
+	}
 	.add__container {
 		display: flex;
 		flex-direction: row;
@@ -616,9 +617,9 @@ h2 {
 	}
 }
 @media (max-width: 400px) {
-	.budget {
+	/* .budget {
 		width: 95%;
-	}
+	} */
 	.item__value {
 		overflow: hidden;
 		text-overflow: ellipsis;

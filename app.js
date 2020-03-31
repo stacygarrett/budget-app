@@ -480,13 +480,6 @@ const controller = (function(budgetCtrl, UICtrl) {
 			updatePercentages();
 			updateExpPercentages();
 		}
-		// 3. Add item to the UI
-
-		// 4. Clear the fields
-
-		// 5. Calculate and update Budget
-
-		// 6. Calculate and update Percentages
 	};
 	const ctrlDeleteItem = function(event) {
 		let itemID, splitID, type, ID;
