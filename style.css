@@ -575,7 +575,7 @@ h2 {
 		padding: 10px;
 	}
 	.item__expenses {
-		grid-template-columns: 33% 29% 38%;
+		grid-template-columns: 30% 33% 38%;
 	}
 	.item__description {
 		overflow: hidden;
@@ -588,9 +588,9 @@ h2 {
 		text-overflow: ellipsis;
 		white-space: nowrap;
 	}
-	.cat__percentage {
+	/* .cat__percentage {
 		width: 36px;
-	}
+	} */
 	.exp-container {
 		grid-template-columns: 50% 50%;
 	}
