@@ -411,6 +411,7 @@ const controller = (function(budgetCtrl, UICtrl) {
 			updateBudget();
 			// 4. Calculate and update Percentages
 			updatePercentages();
+			updateExpPercentages();
 		}
 	};
 	return {
